@@ -4,13 +4,8 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     image: akshay0ka/rbac:backend
-    environment:
-      - DATABASE_URL=${DATABASE_URL}
-      - JWT_SECRET=${JWT_SECRET}
-      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN:-1h}
-      - PORT=3001
-      - FRONTEND_URL=http://localhost:3000
-      - LOG_LEVEL=info
+    env_file:
+      - ./backend/.env
     ports:
       - "3001:3001"
     restart: unless-stopped
@@ -22,8 +17,8 @@ services:
       args:
         - NEXT_PUBLIC_API_URL=http://localhost:3001/api
     image: akshay0ka/rbac:frontend
-    environment:
-      - NEXT_PUBLIC_API_URL=http://localhost:3001/api
+    env_file:
+      - ./frontend/.env.local
     ports:
       - "3000:3000"
     depends_on:

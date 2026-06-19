@@ -42,13 +42,16 @@ This is the fastest way to get the system running locally or on a VPS.
 ```bash
 git clone <your-repo-url>
 cd rbac-system
-cp .env.example .env
+
+# Setup Backend Environment
+cp backend/.env.example backend/.env
+# Edit backend/.env and add your DATABASE_URL and a random JWT_SECRET
+
+# Setup Frontend Environment
+cp frontend/.env.local.example frontend/.env.local
 ```
 
-**2. Fill in `.env`:**
-Add your `DATABASE_URL` and a random `JWT_SECRET`.
-
-**3. Launch:**
+**2. Launch:**
 ```bash
 docker compose up -d --build
 ```
@@ -100,7 +103,7 @@ Frontend runs on `http://localhost:3000`.
 
 ## 🔐 Environment Variables
 
-### Root / Backend `.env`
+### Backend (`backend/.env`)
 
 | Variable | Required | Default | Description |
 |---|---|---|---|
@@ -110,7 +113,7 @@ Frontend runs on `http://localhost:3000`.
 | `PORT` | ❌ | `3001` | API gateway port |
 | `FRONTEND_URL` | ❌ | `http://localhost:3000` | Allowed CORS origin |
 
-### Frontend `.env.local`
+### Frontend (`frontend/.env.local`)
 
 | Variable | Default | Description |
 |---|---|---|
