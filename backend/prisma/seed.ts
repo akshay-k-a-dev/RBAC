@@ -31,7 +31,7 @@ async function main() {
 
   console.log(`✅ Seed admin upserted: ${admin.email} (id: ${admin.id})`);
   console.log(`   Email:    ${ADMIN_EMAIL}`);
-  console.log(`   Password: ${ADMIN_PASSWORD}`);
+  console.log("   Password: [REDACTED]");
   console.log("⚠️  Change the admin password after first login in production!");
 }
 
